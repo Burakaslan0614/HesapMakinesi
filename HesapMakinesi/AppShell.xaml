@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="HesapMakinesi.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:sayfalar="clr-namespace:HesapMakinesi.Sayfalar"
+    Title="Hesap Makinesi"
+    FlyoutBehavior="Flyout"
+    Shell.NavBarHasShadow="False"
+    Shell.BackgroundColor="{AppThemeBinding Light={StaticResource MetalikGriAcik}, Dark={StaticResource MetalikGriKoyu}}"
+    Shell.ForegroundColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+    Shell.TitleColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+    Shell.FlyoutBackdrop="{AppThemeBinding Light=#40000000, Dark=#80000000}"
+    FlyoutBackgroundColor="{AppThemeBinding Light={StaticResource MetalikGriAcik}, Dark={StaticResource MetalikGriKoyu}}">
+
+    <!-- Shell Başlık Çubuğu ve Menü Görsel Stili (Metalik Gri) -->
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Element" x:Key="BaseStyle">
+                <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource MetalikGriAcik}, Dark={StaticResource MetalikGriKoyu}}" />
+                <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}" />
+                <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}" />
+                <Setter Property="Shell.UnselectedColor" Value="{AppThemeBinding Light={StaticResource IkincilMetinRengiAcik}, Dark={StaticResource IkincilMetinRengiKoyu}}" />
+            </Style>
+            <Style TargetType="Shell" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!-- Yan Menü (Flyout) Başlığı -->
+    <Shell.FlyoutHeader>
+        <Grid Padding="20,24,20,12" BackgroundColor="Transparent">
+            <Label Text="Hesap Makinesi"
+                   Style="{StaticResource BaslikLabelStili}"
+                   FontSize="{StaticResource BuyukYaziBoyutu}" />
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <!-- 1. Menü Öğesi: Standart Hesap Makinesi Modu -->
+    <FlyoutItem Title="Standart">
+        <ShellContent
+            Title="Standart"
+            ContentTemplate="{DataTemplate sayfalar:StandartSayfa}"
+            Route="StandartSayfa" />
+    </FlyoutItem>
+
+    <!-- 2. Menü Öğesi: Bilimsel Hesap Makinesi Modu -->
+    <FlyoutItem Title="Bilimsel">
+        <ShellContent
+            Title="Bilimsel"
+            ContentTemplate="{DataTemplate sayfalar:BilimselSayfa}"
+            Route="BilimselSayfa" />
+    </FlyoutItem>
+
+    <!-- 3. Menü Öğesi: Ayarlar (Settings) Sayfası -->
+    <FlyoutItem Title="Ayarlar">
+        <ShellContent
+            Title="Ayarlar"
+            ContentTemplate="{DataTemplate sayfalar:AyarlarSayfasi}"
+            Route="AyarlarSayfasi" />
+    </FlyoutItem>
+
+</Shell>

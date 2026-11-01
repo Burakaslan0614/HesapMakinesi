@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.Sayfalar.AyarlarSayfasi"
+             Title="Ayarlar"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource MetalikGriAcik}, Dark={StaticResource MetalikGriKoyu}}"
+             Shell.ForegroundColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+             Shell.TitleColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource SayfaArkaPlanAcik}, Dark={StaticResource SayfaArkaPlanKoyu}}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="24,16,24,24" Spacing="16">
+
+            <!-- 1. TEMA SEÇİM KARTI -->
+            <Border Style="{StaticResource AyarKartiStili}">
+                <VerticalStackLayout Spacing="12">
+                    
+                    <!-- Kart Başlığı ve Açıklaması -->
+                    <VerticalStackLayout Spacing="4">
+                        <Label Text="Uygulama Teması"
+                               Style="{StaticResource AyarBaslikStili}" />
+                        <Label Text="Görüntülenecek uygulama temasını seçin"
+                               Style="{StaticResource AyarAciklamaStili}" />
+                    </VerticalStackLayout>
+
+                    <!-- Ayırıcı Çizgi -->
+                    <BoxView HeightRequest="1"
+                             BackgroundColor="{AppThemeBinding Light={StaticResource ButonKenarlikRengiAcik}, Dark={StaticResource ButonKenarlikRengiKoyu}}"
+                             Margin="0,4,0,8" />
+
+                    <!-- Tema Seçenekleri (Radio Group) -->
+                    <VerticalStackLayout Spacing="10" RadioButtonGroup.GroupName="TemaSecimi">
+
+                        <!-- Seçenek 1: Açık Tema -->
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <RadioButton x:Name="RadyoAcikTema"
+                                         Content="Açık (Light)"
+                                         TextColor="{AppThemeBinding Light={StaticResource AnaMetinRengiAcik}, Dark={StaticResource AnaMetinRengiKoyu}}"
+                                         CheckedChanged="OnTemaSecimiDegisti" />
+                        </HorizontalStackLayout>
+
+                        <!-- Seçenek 2: Koyu Tema -->
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <RadioButton x:Name="RadyoKoyuTema"
+                                         Content="Koyu (Dark)"
+                                         TextColor="{AppThemeBinding Light={StaticResource AnaMetinRengiAcik}, Dark={StaticResource AnaMetinRengiKoyu}}"
+                                         CheckedChanged="OnTemaSecimiDegisti" />
+                        </HorizontalStackLayout>
+
+                        <!-- Seçenek 3: Sistem Ayarını Kullan -->
+                        <HorizontalStackLayout Spacing="10" VerticalOptions="Center">
+                            <RadioButton x:Name="RadyoSistemTemasi"
+                                         Content="Sistem ayarını kullan (Use system setting)"
+                                         TextColor="{AppThemeBinding Light={StaticResource AnaMetinRengiAcik}, Dark={StaticResource AnaMetinRengiKoyu}}"
+                                         CheckedChanged="OnTemaSecimiDegisti" />
+                        </HorizontalStackLayout>
+
+                    </VerticalStackLayout>
+
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- 2. HAKKINDA KARTI -->
+            <Border Style="{StaticResource AyarKartiStili}">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Hakkında"
+                           Style="{StaticResource AyarBaslikStili}" />
+                    <Label Text="Windows Hesap Makinesi (.NET MAUI)"
+                           Style="{StaticResource AyarAciklamaStili}" />
+                    <Label Text="Bartın Üniversitesi - Bilgisayar Mühendisliği"
+                           Style="{StaticResource AyarAciklamaStili}" />
+                    <Label Text="BSM352 / BSM322 Görsel Programlama Dersi - Ödev 1"
+                           Style="{StaticResource AyarAciklamaStili}" />
+                    <Label Text="Sürüm 1.0.0"
+                           Style="{StaticResource AyarAciklamaStili}"
+                           TextColor="{AppThemeBinding Light={StaticResource IkincilMetinRengiAcik}, Dark={StaticResource IkincilMetinRengiKoyu}}" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

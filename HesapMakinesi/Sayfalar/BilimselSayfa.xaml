@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HesapMakinesi.Sayfalar.BilimselSayfa"
+             Title="Bilimsel"
+             Shell.BackgroundColor="{AppThemeBinding Light={StaticResource MetalikGriAcik}, Dark={StaticResource MetalikGriKoyu}}"
+             Shell.ForegroundColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+             Shell.TitleColor="{AppThemeBinding Light={StaticResource MetalikGriMetinAcik}, Dark={StaticResource MetalikGriMetinKoyu}}"
+             BackgroundColor="{AppThemeBinding Light={StaticResource SayfaArkaPlanAcik}, Dark={StaticResource SayfaArkaPlanKoyu}}">
+
+    <Grid RowDefinitions="Auto,Auto,Auto,*"
+          Padding="16,8,16,16"
+          RowSpacing="6">
+
+        <!-- 1. Ekran Bölümü (Geçmiş ve Sonuç) -->
+        <VerticalStackLayout Grid.Row="0" Spacing="2" Margin="0,4,0,4">
+            <!-- İşlem Geçmişi -->
+            <Label x:Name="GecmisEtiketi"
+                   Text=""
+                   Style="{StaticResource EkranGecmisStili}" />
+
+            <!-- Büyük Sonuç Ekranı -->
+            <Label x:Name="SonucEtiketi"
+                   Text="0"
+                   Style="{StaticResource EkranSonucStili}" />
+        </VerticalStackLayout>
+
+        <!-- 2. Açı Birimi (DEG/RAD), F-E ve Trigonometri Çubuğu -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,*,*,*,*,*"
+              ColumnSpacing="4"
+              Margin="0,0,0,2">
+            <!-- DEG / RAD Değiştirme Butonu -->
+            <Button x:Name="AciBirimiButonu"
+                    Grid.Column="0"
+                    Text="DEG"
+                    Style="{StaticResource BellekButonStili}"
+                    Clicked="OnAciBirimiTiklandi" />
+
+            <!-- F-E Bilimsel Gösterim Butonu -->
+            <Button x:Name="UstelGosterimButonu"
+                    Grid.Column="1"
+                    Text="F-E"
+                    Style="{StaticResource BellekButonStili}"
+                    Clicked="OnUstelGosterimTiklandi" />
+
+            <!-- Trigonometrik Butonlar: sin, cos, tan, cot -->
+            <Button Grid.Column="2" Text="sin" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Column="3" Text="cos" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Column="4" Text="tan" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Column="5" Text="cot" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+        </Grid>
+
+        <!-- 3. Bellek (Memory) Butonları Çubuğu -->
+        <Grid Grid.Row="2"
+              ColumnDefinitions="*,*,*,*,*"
+              ColumnSpacing="4"
+              Margin="0,0,0,2">
+            <Button Grid.Column="0" Text="MC" Style="{StaticResource BellekButonStili}" Clicked="OnBellekTemizleTiklandi" />
+            <Button Grid.Column="1" Text="MR" Style="{StaticResource BellekButonStili}" Clicked="OnBellekGetirTiklandi" />
+            <Button Grid.Column="2" Text="M+" Style="{StaticResource BellekButonStili}" Clicked="OnBellekEkleTiklandi" />
+            <Button Grid.Column="3" Text="M-" Style="{StaticResource BellekButonStili}" Clicked="OnBellekCikarTiklandi" />
+            <Button Grid.Column="4" Text="MS" Style="{StaticResource BellekButonStili}" Clicked="OnBellekKaydetTiklandi" />
+        </Grid>
+
+        <!-- 4. Ana Buton Tablosu (7 Satır x 5 Sütun - Windows Bilimsel Düzeni) -->
+        <Grid Grid.Row="3"
+              RowDefinitions="*,*,*,*,*,*,*"
+              ColumnDefinitions="*,*,*,*,*"
+              RowSpacing="4"
+              ColumnSpacing="4">
+
+            <!-- Satır 0: 2nd, π, e, C, ⌫ -->
+            <Button x:Name="IkinciFonksiyonButonu" Grid.Row="0" Grid.Column="0" Text="2ⁿᵈ" Style="{StaticResource FonksiyonButonStili}" Clicked="OnIkinciFonksiyonTiklandi" />
+            <Button Grid.Row="0" Grid.Column="1" Text="π" Style="{StaticResource FonksiyonButonStili}" Clicked="OnPiTiklandi" />
+            <Button Grid.Row="0" Grid.Column="2" Text="e" Style="{StaticResource FonksiyonButonStili}" Clicked="OnEulerTiklandi" />
+            <Button Grid.Row="0" Grid.Column="3" Text="C" Style="{StaticResource IslemButonStili}" Clicked="OnTumuTemizleTiklandi" />
+            <Button Grid.Row="0" Grid.Column="4" Text="⌫" Style="{StaticResource IslemButonStili}" Clicked="OnSilmeTiklandi" />
+
+            <!-- Satır 1: x², 1/x, |x|, exp, mod -->
+            <Button Grid.Row="1" Grid.Column="0" Text="x²" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="1" Grid.Column="1" Text="1/x" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="1" Grid.Column="2" Text="|x|" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="1" Grid.Column="3" Text="exp" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="1" Grid.Column="4" Text="mod" Style="{StaticResource IslemButonStili}" Clicked="OnIslemTiklandi" />
+
+            <!-- Satır 2: √x, (, ), n!, ÷ -->
+            <Button Grid.Row="2" Grid.Column="0" Text="√x" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="2" Grid.Column="1" Text="(" Style="{StaticResource FonksiyonButonStili}" Clicked="OnParantezTiklandi" />
+            <Button Grid.Row="2" Grid.Column="2" Text=")" Style="{StaticResource FonksiyonButonStili}" Clicked="OnParantezTiklandi" />
+            <Button Grid.Row="2" Grid.Column="3" Text="n!" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="2" Grid.Column="4" Text="÷" Style="{StaticResource IslemButonStili}" Clicked="OnIslemTiklandi" />
+
+            <!-- Satır 3: x^y, 7, 8, 9, × -->
+            <Button Grid.Row="3" Grid.Column="0" Text="x^y" Style="{StaticResource FonksiyonButonStili}" Clicked="OnIslemTiklandi" />
+            <Button Grid.Row="3" Grid.Column="1" Text="7" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="3" Grid.Column="2" Text="8" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="3" Grid.Column="3" Text="9" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="3" Grid.Column="4" Text="×" Style="{StaticResource IslemButonStili}" Clicked="OnIslemTiklandi" />
+
+            <!-- Satır 4: 10^x, 4, 5, 6, - -->
+            <Button Grid.Row="4" Grid.Column="0" Text="10^x" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="4" Grid.Column="1" Text="4" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="4" Grid.Column="2" Text="5" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="4" Grid.Column="3" Text="6" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="4" Grid.Column="4" Text="-" Style="{StaticResource IslemButonStili}" Clicked="OnIslemTiklandi" />
+
+            <!-- Satır 5: log, 1, 2, 3, + -->
+            <Button Grid.Row="5" Grid.Column="0" Text="log" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="5" Grid.Column="1" Text="1" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="5" Grid.Column="2" Text="2" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="5" Grid.Column="3" Text="3" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="5" Grid.Column="4" Text="+" Style="{StaticResource IslemButonStili}" Clicked="OnIslemTiklandi" />
+
+            <!-- Satır 6: ln, +/-, 0, ,, = -->
+            <Button Grid.Row="6" Grid.Column="0" Text="ln" Style="{StaticResource FonksiyonButonStili}" Clicked="OnFonksiyonTiklandi" />
+            <Button Grid.Row="6" Grid.Column="1" Text="+/-" Style="{StaticResource RakamButonStili}" Clicked="OnIsaretDegistirTiklandi" />
+            <Button Grid.Row="6" Grid.Column="2" Text="0" Style="{StaticResource RakamButonStili}" Clicked="OnRakamTiklandi" />
+            <Button Grid.Row="6" Grid.Column="3" Text="," Style="{StaticResource RakamButonStili}" Clicked="OnVirgulTiklandi" />
+            <Button Grid.Row="6" Grid.Column="4" Text="=" Style="{StaticResource EsittirButonStili}" Clicked="OnEsittirTiklandi" />
+
+        </Grid>
+
+    </Grid>
+
+</ContentPage>

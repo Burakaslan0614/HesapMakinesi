@@ -1,0 +1,19 @@
+<maui:MauiWinUIApplication
+    x:Class="HesapMakinesi.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:HesapMakinesi.WinUI">
+
+    <maui:MauiWinUIApplication.Resources>
+        <ResourceDictionary>
+            <!-- Windows Shell / NavigationView ve Header için Metalik Gri Renkleri -->
+            <SolidColorBrush x:Key="NavigationViewHeaderBackground" Color="#BDC4CC" />
+            <SolidColorBrush x:Key="NavigationViewTopNavAreaBackground" Color="#BDC4CC" />
+            <SolidColorBrush x:Key="NavigationViewHeaderForeground" Color="#1A202C" />
+            <SolidColorBrush x:Key="NavigationViewBackButtonBackground" Color="#BDC4CC" />
+            <SolidColorBrush x:Key="NavigationViewBackButtonForeground" Color="#1A202C" />
+        </ResourceDictionary>
+    </maui:MauiWinUIApplication.Resources>
+
+</maui:MauiWinUIApplication>
